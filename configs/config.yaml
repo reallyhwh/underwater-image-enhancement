@@ -1,0 +1,60 @@
+# 课题根目录
+project_root: "D:/随记/通信工程/课题"
+
+# 数据路径
+data:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  train_dir: "data/processed/UIEB/train"
+  val_dir: "data/processed/UIEB/val"
+  test_dir: "data/processed/UIEB/test"
+  
+  # 数据集配置
+  datasets:
+    uieb: "data/raw/UIEB"
+    euvp: "data/raw/EUVP"
+    lsui: "data/raw/LSUI"
+
+# 模型路径
+model:
+  h_estimation: "models/h_estimation/best_model.pth"
+  denoising: "models/denoising/best_model.pth"
+
+# 训练配置
+train:
+  # 通用配置
+  batch_size: 8
+  num_workers: 0  # 设为0减少内存占用
+  seed: 42
+  
+  # H估计网络
+  h_estimation:
+    epochs: 100
+    lr: 0.0001
+    weight_decay: 0.0001
+    batch_size: 8
+    
+  # 去噪网络
+  denoising:
+    epochs: 50
+    lr: 0.0001
+    weight_decay: 0.0001
+    batch_size: 4  # 增大batch_size加速训练
+
+# ADMM配置
+admm:
+  rho: 0.01          # 惩罚因子
+  lambda: 0.001      # 正则化系数
+  max_iter: 20        # 最大迭代次数
+  tol: 0.0001        # 收敛阈值
+
+# 图像参数
+image:
+  size: 256           # 裁剪尺寸
+  channels: 3          # RGB通道
+
+# 评估指标
+eval:
+  psnr_threshold: 25   # PSNR目标 (dB)
+  ssim_threshold: 0.85 # SSIM目标
+  max_time: 2         # 推理时间上限 (秒)

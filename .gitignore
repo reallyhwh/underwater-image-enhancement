@@ -1,0 +1,40 @@
+# IDE
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+
+# Linting/Formatting
+.ruff_cache/
+.mypy_cache/
+
+# Large directories (local only)
+data/
+models/
+logs/
+
+# Environment
+.env
+.venv/
+venv/
+ENV/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+.dumate/
+*.log
+
+# Large model files
+*.pth
+*.pt
+*.ckpt
